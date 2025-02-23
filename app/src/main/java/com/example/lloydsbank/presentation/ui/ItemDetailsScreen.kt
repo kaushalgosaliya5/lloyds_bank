@@ -24,6 +24,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -68,9 +69,10 @@ fun ItemDetailsScreen(itemId : String, navController: NavController){
                 AsyncImage(
                     model = it.imageUrl,
                     contentDescription = it.name,
+                    contentScale = ContentScale.Fit,
                     modifier = Modifier
-                        .size(128.dp)
-                        .clip(CircleShape)
+                        .size(256.dp)
+                       // .clip(CircleShape)
                         .align(Alignment.CenterHorizontally)
                         .padding(top = 16.dp)
                 )
