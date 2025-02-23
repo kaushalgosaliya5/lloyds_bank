@@ -7,11 +7,22 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.lloydsbank.presentation.ui.ItemDetailsScreen
 import com.example.lloydsbank.presentation.ui.ItemListScreen
+import com.example.lloydsbank.presentation.ui.SplashScreen
 import com.example.lloydsbank.presentation.viewmodel.ItemListViewModel
+import com.example.lloydsbank.presentation.viewmodel.SplashViewModel
 
 @Composable
 fun AppNavHost(navController: NavHostController){
-       NavHost(navController, startDestination = "item_list") {
+       NavHost(navController, startDestination = "splash") {
+
+           composable("splash"){ backStackEntry ->
+               val viewModel = hiltViewModel<SplashViewModel>(backStackEntry)
+               SplashScreen (viewModel = viewModel){
+                     navController.navigate("item_list"){
+                          popUpTo("splash") { inclusive = true}
+                     }
+               }
+           }
            composable("item_list") { backStackEntry ->
                 val viewModel : ItemListViewModel = hiltViewModel(backStackEntry)
                 ItemListScreen(viewModel = viewModel, navController = navController)
