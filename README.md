@@ -5,7 +5,7 @@
 Lloyds Bank Application is develop using below practies and flow standards.
 
 - **Modularization**
-- **Clean Architecture**
+- **Clean Architecture** : Presentation : Domain : Data
 - **MVVM : Movel View ViewModel**
 - **Jetpack Compose** : UI Component
 - **Hilt** : Dependency Injection
