@@ -45,7 +45,7 @@ fun ItemListScreen(viewModel : ItemListViewModel = hiltViewModel(), navControlle
      val uiState by viewModel.uiState.collectAsState()
 
      Column (modifier =  Modifier.fillMaxSize()){
-          TopAppBar(title = { Text("Item List",textAlign = TextAlign.Center) })
+          TopAppBar(title = { Text("Fruits List",textAlign = TextAlign.Center) })
 
           when(uiState){
 
@@ -86,10 +86,10 @@ fun ItemRow(item : Item, navController: NavController){
              .fillMaxWidth()
              .padding(horizontal = 16.dp, vertical = 8.dp)
              .background(
-                 color = MaterialTheme.colorScheme.surface,
+                 color = MaterialTheme.colorScheme.background,
                  shape = RoundedCornerShape(8.dp)
              )
-             .shadow(elevation = 4.dp,shape = RoundedCornerShape(8.dp))
+             .shadow(elevation = 4.dp,shape = RoundedCornerShape(8.dp), ambientColor = Color.Blue,spotColor = Color.Red)
              .clickable {
                  navController.navigate("itemDetails/${item.id}")
              }
@@ -101,10 +101,17 @@ fun ItemRow(item : Item, navController: NavController){
                       modifier = Modifier.size(64.dp).clip(CircleShape))
                  Spacer(modifier = Modifier.width(16.dp))
                  Column{
-                       Text( text = item.name,
-                             style = MaterialTheme.typography.bodyMedium,
-                             color = MaterialTheme.colorScheme.onSurface)
-                        Spacer(modifier = Modifier.height(4.dp))
+                       Row (modifier = Modifier.fillMaxWidth()){
+                           Text( text = item.name,
+                               modifier = Modifier.weight(1f),
+                               style = MaterialTheme.typography.bodyMedium,
+                               color = MaterialTheme.colorScheme.onSurface)
+                           Text( text = " Price: ${item.price}  ",
+                               textAlign = TextAlign.End,
+                               style = MaterialTheme.typography.bodyMedium,
+                               color = MaterialTheme.colorScheme.onSurface)
+                       }
+                       Spacer(modifier = Modifier.height(4.dp))
                         Text(
                             text = item.description,
                             style = MaterialTheme.typography.bodySmall,

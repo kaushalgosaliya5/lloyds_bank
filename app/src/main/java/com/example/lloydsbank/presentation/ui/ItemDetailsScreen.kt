@@ -24,6 +24,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -45,7 +46,7 @@ fun ItemDetailsScreen(itemId : String, navController: NavController){
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Item Details") },
+                title = { Text("Fruit Details") },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
@@ -79,6 +80,11 @@ fun ItemDetailsScreen(itemId : String, navController: NavController){
                     style = MaterialTheme.typography.headlineMedium,
                     modifier = Modifier.padding(16.dp).align(Alignment.CenterHorizontally)
                 )
+                Text( text = "Price: ${it.price}  ",
+                    modifier = Modifier.padding(horizontal = 16.dp),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurface)
+                Spacer(modifier = Modifier.padding(10.dp))
                 Text(
                     text = it.description,
                     style = MaterialTheme.typography.bodyLarge,
