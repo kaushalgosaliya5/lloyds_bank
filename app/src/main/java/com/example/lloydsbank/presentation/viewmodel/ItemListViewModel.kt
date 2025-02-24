@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class ItemListViewModel @Inject constructor( private val fetchitemDetailsUseCase : FetchItemDetailsUseCase) : ViewModel() {
+class ItemListViewModel @Inject constructor( private val fetchItemListUseCase : FetchItemDetailsUseCase) : ViewModel() {
 
       private val _items = MutableStateFlow<List<Item>>(emptyList())
 
@@ -28,7 +28,7 @@ class ItemListViewModel @Inject constructor( private val fetchitemDetailsUseCase
        private fun fetchItems(){
                 viewModelScope.launch {
                     _uiState.value = try{
-                          _items.value = fetchitemDetailsUseCase.invoke()
+                        _items.value = fetchItemListUseCase.invoke()
                            ItemListState.Success(_items.value)
                     }catch ( e: Exception){
                          ItemListState.Error("Failed to fetch items")
