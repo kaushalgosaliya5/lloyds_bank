@@ -13,6 +13,6 @@ Lloyds Bank Application is develop using below practies and flow standards.
 
 ### Screenshots
 
-![Splash Screen](https://drive.google.com/file/d/1MCWdAZkUOxF5N3zb8Z8T7bWK7rlGeMCE/view?usp=sharing  "Optional title")
-![Fruit Listing Screen](https://drive.google.com/file/d/1K3o7KzW9vY9QX8QKQJrTQ62uf9xDMxCY/view?usp=sharing)
-![Fruit Details Screen](https://drive.google.com/file/d/1uddalpMTn9-P6dlMbB-jCoiHnw38ybW9/view?usp=sharing)
+![Splash Screen](https://github.com/user-attachments/assets/5adad6d4-89aa-4fa6-8a12-1f3a14fcb4aa)
+![Fruit Listing Screen](https://github.com/user-attachments/assets/31f86d0b-8508-4366-b3ca-c3d15c683be9)
+![Fruit Details Screen](https://github.com/user-attachments/assets/e4e6c519-7c8d-4a3a-8b90-a46ef8e87832)
