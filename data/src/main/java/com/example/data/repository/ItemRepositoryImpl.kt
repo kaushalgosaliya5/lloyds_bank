@@ -17,14 +17,14 @@ class ItemRepositoryImpl @Inject constructor(
      private val apiService: ApiService
 ) : ItemRepository {
 
-    private var cachedItems: List<Item>? = null
+    private var itemsList: List<Item>? = null
 
     override suspend fun fetchItemDetails(): List<Item> {
          return withContext(Dispatchers.IO){
               try{
-                  cachedItems = apiService.getItemDetails()
-                  ResultState.Success(cachedItems ?: emptyList())
-                  cachedItems ?: emptyList()
+                  itemsList = apiService.getItemDetails()
+                  ResultState.Success(itemsList ?: emptyList())
+                  itemsList ?: emptyList()
               }catch (exception: Exception){
                   ResultState.Error(exception)
                   emptyList()
@@ -33,7 +33,7 @@ class ItemRepositoryImpl @Inject constructor(
     }
 
     override fun getItemById(itemId: Int): Item? {
-        return cachedItems?.find{ it.id == itemId }
+        return itemsList?.find{ it.id == itemId }
     }
 
 }
