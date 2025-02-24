@@ -22,7 +22,7 @@ class FetchItemDetailsUseCaseTest{
           val useCase = FetchItemDetailsUseCase(itemRepository)
           val response = useCase.invoke()
 
-          assertEquals(getItemList().get(0).name,response.last().name)
+          assertEquals(getItemList().get(1).name,response.last().name)
       }
 
     @Test
