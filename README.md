@@ -2,15 +2,15 @@
 
 ## Description
 
-Lloyds Bank Application is develop using below practies and flow standards.
+Lloyds Bank Application is develop using below practices and flow standards.
 
 - **Modularization**
 - **Clean Architecture** : Presentation : Domain : Data
-- **MVVM** : Movel View ViewModel
+- **MVVM** : Model View ViewModel
 - **Jetpack Compose** : UI Component
 - **Hilt** : Dependency Injection
-- **Coroutines** : Banckground and API Calls
-- **Unit Testing** : Testing Code working as per the expecation
+- **Coroutines** : Background and API Calls
+- **Unit Testing** : Testing Code working as per the expectation
 
 ### Screenshots
 
