@@ -20,12 +20,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun ListPreview() {
-     val navController = rememberNavController()
-     AppNavHost(navController = navController)
-}
+
 
 
 
