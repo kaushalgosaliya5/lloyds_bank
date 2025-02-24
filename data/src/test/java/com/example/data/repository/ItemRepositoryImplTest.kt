@@ -48,6 +48,18 @@ class ItemRepositoryImplTest{
         assertNotEquals("40",response.get(0).price)
     }
 
+    @Test
+    fun test_success_null_check() = runTest {
+
+        `when`(apiService.getItemDetails())
+            .thenReturn(null)
+
+        val repo = ItemRepositoryImpl(apiService)
+        val response = repo.fetchItemDetails()
+
+        assertEquals(null,response.getOrNull(0))
+    }
+
 
     private fun getItemList() : List<Item> {
          return listOf(Item(
