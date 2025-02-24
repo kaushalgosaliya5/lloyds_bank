@@ -49,6 +49,18 @@ class ItemRepositoryImplTest{
     }
 
     @Test
+    fun test_success_empty_list() = runTest {
+
+        `when`(apiService.getItemDetails())
+            .thenReturn(emptyList())
+
+        val repo = ItemRepositoryImpl(apiService)
+        val response = repo.fetchItemDetails()
+
+        assertEquals(0,response.size)
+    }
+
+    @Test
     fun test_success_null_check() = runTest {
 
         `when`(apiService.getItemDetails())
