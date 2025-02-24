@@ -1,5 +1,6 @@
 package com.example.data.di
 
+import com.example.common.Constant
 import com.example.data.remote.ApiService
 import dagger.Module
 import dagger.Provides
@@ -17,7 +18,7 @@ object AppModule {
          @Singleton
          fun provideRetrofit() : Retrofit {
               return Retrofit.Builder()
-                  .baseUrl("https://api.npoint.io/")
+                  .baseUrl(Constant.BASE_URL)
                   .addConverterFactory(GsonConverterFactory.create())
                   .build()
          }
