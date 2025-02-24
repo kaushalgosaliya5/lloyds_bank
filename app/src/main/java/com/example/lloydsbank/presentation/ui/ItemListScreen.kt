@@ -102,7 +102,7 @@ fun ItemRow(item : Item, navController: NavController){
                  Spacer(modifier = Modifier.width(16.dp))
                  Column{
                        Row (modifier = Modifier.fillMaxWidth()){
-                           Text( text = item.name,
+                           Text( text = item.name ?: "",
                                modifier = Modifier.weight(1f),
                                style = MaterialTheme.typography.bodyMedium,
                                color = MaterialTheme.colorScheme.onSurface)
@@ -113,7 +113,7 @@ fun ItemRow(item : Item, navController: NavController){
                        }
                        Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = item.description,
+                            text = item.description ?: "",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )

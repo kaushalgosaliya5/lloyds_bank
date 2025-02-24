@@ -77,7 +77,7 @@ fun ItemDetailsScreen(itemId : String, navController: NavController){
                 )
                 Spacer(modifier = Modifier.padding(10.dp))
                 Text(
-                    text = it.name,
+                    text = it.name ?: "",
                     style = MaterialTheme.typography.headlineMedium,
                     modifier = Modifier.padding(16.dp).align(Alignment.CenterHorizontally)
                 )
@@ -87,7 +87,7 @@ fun ItemDetailsScreen(itemId : String, navController: NavController){
                     color = MaterialTheme.colorScheme.onSurface)
                 Spacer(modifier = Modifier.padding(10.dp))
                 Text(
-                    text = it.description,
+                    text = it.description ?: "",
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
