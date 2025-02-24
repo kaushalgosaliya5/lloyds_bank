@@ -13,7 +13,7 @@ class ItemRepositoryImplTest{
     private val apiService : ApiService = mock()
 
     @Test
-    fun test_item_count_success() = runTest {
+    fun test_success_item_count() = runTest {
 
         `when`(apiService.getItemDetails())
             .thenReturn(getItemList())
@@ -25,7 +25,7 @@ class ItemRepositoryImplTest{
     }
 
     @Test
-    fun test_item_name_success() = runTest {
+    fun test_success_item_name() = runTest {
 
         `when`(apiService.getItemDetails())
             .thenReturn(getItemList())
@@ -33,14 +33,26 @@ class ItemRepositoryImplTest{
         val repo = ItemRepositoryImpl(apiService)
         val response = repo.fetchItemDetails()
 
-        assertEquals("banana",response.get(0).name)
+        assertEquals("apple",response.get(0).name)
+    }
+
+    @Test
+    fun test_success_price_not_equal() = runTest {
+
+        `when`(apiService.getItemDetails())
+            .thenReturn(getItemList())
+
+        val repo = ItemRepositoryImpl(apiService)
+        val response = repo.fetchItemDetails()
+
+        assertNotEquals("40",response.get(0).price)
     }
 
 
     private fun getItemList() : List<Item> {
          return listOf(Item(
-             id = 0,
-             name = "banana",
+             id = 1,
+             name = "apple",
              imageUrl = "https://apple.jpg",
              description = "apple is red",
              price = "100"
