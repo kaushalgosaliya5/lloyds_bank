@@ -72,7 +72,6 @@ fun ItemDetailsScreen(itemId : String, navController: NavController){
                     contentScale = ContentScale.Fit,
                     modifier = Modifier
                         .size(256.dp)
-                       // .clip(CircleShape)
                         .align(Alignment.CenterHorizontally)
                         .padding(top = 16.dp)
                 )
