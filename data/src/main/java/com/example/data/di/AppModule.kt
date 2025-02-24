@@ -1,4 +1,4 @@
-package com.example.lloydsbank.di
+package com.example.data.di
 
 import com.example.data.remote.ApiService
 import dagger.Module
