@@ -29,12 +29,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.example.common.Constant
 import com.example.domain.model.Item
+import com.example.lloydsbank.R
 import com.example.lloydsbank.presentation.state.ItemListState
 import com.example.lloydsbank.presentation.viewmodel.ItemListViewModel
 
@@ -45,7 +48,7 @@ fun ItemListScreen(viewModel : ItemListViewModel = hiltViewModel(), navControlle
      val uiState by viewModel.uiState.collectAsState()
 
      Column (modifier =  Modifier.fillMaxSize()){
-          TopAppBar(title = { Text("Fruits List",textAlign = TextAlign.Center) })
+          TopAppBar(title = { Text(stringResource(R.string.fruits_list),textAlign = TextAlign.Center) })
 
           when(uiState){
 
@@ -91,7 +94,7 @@ fun ItemRow(item : Item, navController: NavController){
              )
              .shadow(elevation = 4.dp,shape = RoundedCornerShape(8.dp), ambientColor = Color.Blue,spotColor = Color.Red)
              .clickable {
-                 navController.navigate("itemDetails/${item.id}")
+                 navController.navigate("${Constant.ITEM_DETAILS}/${item.id}")
              }
              .padding(16.dp),
              verticalAlignment = Alignment.CenterVertically
@@ -106,7 +109,7 @@ fun ItemRow(item : Item, navController: NavController){
                                modifier = Modifier.weight(1f),
                                style = MaterialTheme.typography.bodyMedium,
                                color = MaterialTheme.colorScheme.onSurface)
-                           Text( text = " Price: ${item.price}  ",
+                           Text( text = stringResource(R.string.price) + " : ${item.price}  ",
                                textAlign = TextAlign.End,
                                style = MaterialTheme.typography.bodyMedium,
                                color = MaterialTheme.colorScheme.onSurface)

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">lloydsbank</string>
+    <string name="splash_title">Lloyds Banking App</string>
+    <string name="fruits_list">Fruits List</string>
+    <string name="fruit_details">Fruit Details</string>
+    <string name="back">Back</string>
+    <string name="price">Price</string>
 </resources>

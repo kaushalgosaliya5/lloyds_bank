@@ -25,11 +25,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.example.lloydsbank.R
 import com.example.lloydsbank.presentation.viewmodel.ItemDetailsViewModel
 
 
@@ -47,12 +49,12 @@ fun ItemDetailsScreen(itemId : String, navController: NavController){
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Fruit Details") },
+                title = { Text(stringResource(R.string.fruit_details)) },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack, // Material Icon for back
-                            contentDescription = "Back"
+                            contentDescription = stringResource(R.string.back)
                         )
                     }
                 }
@@ -81,7 +83,7 @@ fun ItemDetailsScreen(itemId : String, navController: NavController){
                     style = MaterialTheme.typography.headlineMedium,
                     modifier = Modifier.padding(16.dp).align(Alignment.CenterHorizontally)
                 )
-                Text( text = "Price: ${it.price}  ",
+                Text( text = stringResource(R.string.price) + ": ${it.price}  ",
                     modifier = Modifier.padding(horizontal = 16.dp),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface)

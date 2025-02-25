@@ -12,7 +12,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.lloydsbank.R
 import com.example.lloydsbank.presentation.viewmodel.SplashViewModel
 
 @Composable
@@ -31,7 +33,7 @@ fun SplashScreen(viewModel: SplashViewModel = hiltViewModel(), onTimeOut:() -> U
          .background(Color.Gray),
           contentAlignment = Alignment.Center
      ){
-          Text( text = " Lloyds Banking App ", style = MaterialTheme.typography.headlineLarge,
+          Text( text = stringResource(R.string.splash_title), style = MaterialTheme.typography.headlineLarge,
               color = Color.White)
     }
 

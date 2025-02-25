@@ -5,6 +5,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.common.Constant
 import com.example.lloydsbank.presentation.ui.ItemDetailsScreen
 import com.example.lloydsbank.presentation.ui.ItemListScreen
 import com.example.lloydsbank.presentation.ui.SplashScreen
@@ -13,22 +14,22 @@ import com.example.lloydsbank.presentation.viewmodel.SplashViewModel
 
 @Composable
 fun AppNavHost(navController: NavHostController){
-       NavHost(navController, startDestination = "splash") {
+       NavHost(navController, startDestination = Constant.SCREEN_SPLASH) {
 
-           composable("splash"){ backStackEntry ->
+           composable(Constant.SCREEN_SPLASH){ backStackEntry ->
                val viewModel = hiltViewModel<SplashViewModel>(backStackEntry)
                SplashScreen (viewModel = viewModel){
-                     navController.navigate("item_list"){
-                          popUpTo("splash") { inclusive = true}
+                     navController.navigate(Constant.ITEM_LIST){
+                          popUpTo(Constant.SCREEN_SPLASH) { inclusive = true}
                      }
                }
            }
-           composable("item_list") { backStackEntry ->
+           composable(Constant.ITEM_LIST) { backStackEntry ->
                 val viewModel : ItemListViewModel = hiltViewModel(backStackEntry)
                 ItemListScreen(viewModel = viewModel, navController = navController)
            }
-           composable("itemDetails/{itemId}"){ backStackEntry ->
-                val itemId = backStackEntry.arguments?.getString("itemId") ?: ""
+           composable("${Constant.ITEM_DETAILS}/{${Constant.ITEM_ID}}"){ backStackEntry ->
+                val itemId = backStackEntry.arguments?.getString(Constant.ITEM_ID) ?: ""
                 ItemDetailsScreen(itemId = itemId, navController = navController)
            }
        }
