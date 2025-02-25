@@ -1,8 +1,8 @@
-# Lloyds Bank Android Application POC 
+# Fruits Android Application POC 
 
 ## Description
 
-Lloyds Bank Application is develop using below practices and flow standards.
+Fruits Application is develop using below practices and flow standards.
 
 - **Modularization**
 - **Clean Architecture** : Presentation : Domain : Data
