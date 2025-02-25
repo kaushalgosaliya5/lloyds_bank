@@ -18,23 +18,27 @@ import com.example.lloydsbank.R
 import com.example.lloydsbank.presentation.viewmodel.SplashViewModel
 
 @Composable
-fun SplashScreen(viewModel: SplashViewModel = hiltViewModel(), onTimeOut:() -> Unit){
+fun SplashScreen(viewModel: SplashViewModel = hiltViewModel(), onTimeOut: () -> Unit) {
 
-     val isTimeOutCompleted by viewModel.isTimeoutCompleted.collectAsState()
+    val isTimeOutCompleted by viewModel.isTimeoutCompleted.collectAsState()
 
-     LaunchedEffect(isTimeOutCompleted) {
-           if(isTimeOutCompleted){
-                onTimeOut()
-           }
-     }
+    LaunchedEffect(isTimeOutCompleted) {
+        if (isTimeOutCompleted) {
+            onTimeOut()
+        }
+    }
 
-     Box( modifier =  Modifier
-         .fillMaxSize()
-         .background(Color.Gray),
-          contentAlignment = Alignment.Center
-     ){
-          Text( text = stringResource(R.string.splash_title), style = MaterialTheme.typography.headlineLarge,
-              color = Color.White)
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Gray),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = stringResource(R.string.splash_title),
+            style = MaterialTheme.typography.headlineLarge,
+            color = Color.White
+        )
     }
 
 }

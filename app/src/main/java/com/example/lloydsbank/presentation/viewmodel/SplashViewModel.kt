@@ -12,19 +12,19 @@ import javax.inject.Inject
 @HiltViewModel
 class SplashViewModel @Inject constructor() : ViewModel() {
 
-      private val _isTimeoutCompleted = MutableStateFlow(false)
-      val isTimeoutCompleted: StateFlow<Boolean> = _isTimeoutCompleted
+    private val _isTimeoutCompleted = MutableStateFlow(false)
+    val isTimeoutCompleted: StateFlow<Boolean> = _isTimeoutCompleted
 
-      init{
-          startSplashTimeout()
-      }
+    init {
+        startSplashTimeout()
+    }
 
-      private fun startSplashTimeout(){
-            viewModelScope.launch {
-                  delay(3000)
-                  _isTimeoutCompleted.value = true
-            }
-      }
+    private fun startSplashTimeout() {
+        viewModelScope.launch {
+            delay(3000)
+            _isTimeoutCompleted.value = true
+        }
+    }
 
 
 }

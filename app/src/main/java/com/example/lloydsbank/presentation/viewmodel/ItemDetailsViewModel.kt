@@ -11,15 +11,16 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ItemDetailsViewModel @Inject constructor ( private val getItemByIdUseCase: GetItemByIdUseCase) : ViewModel() {
+class ItemDetailsViewModel @Inject constructor(private val getItemByIdUseCase: GetItemByIdUseCase) :
+    ViewModel() {
 
-      private val _item = MutableStateFlow<Item?>(null)
-      val item: StateFlow<Item?> = _item
+    private val _item = MutableStateFlow<Item?>(null)
+    val item: StateFlow<Item?> = _item
 
-      fun fetchItem(itemId: String){
-           viewModelScope.launch{
-               _item.value = getItemByIdUseCase.invoke(itemId.toInt())
-           }
-      }
+    fun fetchItem(itemId: String) {
+        viewModelScope.launch {
+            _item.value = getItemByIdUseCase.invoke(itemId.toInt())
+        }
+    }
 
 }

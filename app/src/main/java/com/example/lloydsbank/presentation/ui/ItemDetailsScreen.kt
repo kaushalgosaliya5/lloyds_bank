@@ -37,14 +37,14 @@ import com.example.lloydsbank.presentation.viewmodel.ItemDetailsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ItemDetailsScreen(itemId : String, navController: NavController){
+fun ItemDetailsScreen(itemId: String, navController: NavController) {
 
-      val viewModel : ItemDetailsViewModel = hiltViewModel()
-      val item by viewModel.item.collectAsState()
+    val viewModel: ItemDetailsViewModel = hiltViewModel()
+    val item by viewModel.item.collectAsState()
 
-      LaunchedEffect(itemId) {
-            viewModel.fetchItem(itemId)
-      }
+    LaunchedEffect(itemId) {
+        viewModel.fetchItem(itemId)
+    }
 
     Scaffold(
         topBar = {
@@ -81,12 +81,16 @@ fun ItemDetailsScreen(itemId : String, navController: NavController){
                 Text(
                     text = it.name ?: "",
                     style = MaterialTheme.typography.headlineMedium,
-                    modifier = Modifier.padding(16.dp).align(Alignment.CenterHorizontally)
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .align(Alignment.CenterHorizontally)
                 )
-                Text( text = stringResource(R.string.price) + ": ${it.price}  ",
+                Text(
+                    text = stringResource(R.string.price) + ": ${it.price}  ",
                     modifier = Modifier.padding(horizontal = 16.dp),
                     style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurface)
+                    color = MaterialTheme.colorScheme.onSurface
+                )
                 Spacer(modifier = Modifier.padding(10.dp))
                 Text(
                     text = it.description ?: "",

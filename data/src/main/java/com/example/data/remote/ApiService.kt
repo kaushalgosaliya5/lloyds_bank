@@ -5,6 +5,6 @@ import com.example.domain.model.Item
 import retrofit2.http.GET
 
 interface ApiService {
-        @GET(Constant.API_ID)
-        suspend fun getItemDetails() : List<Item>
+    @GET(Constant.API_ID)
+    suspend fun getItemDetails(): List<Item>
 }

@@ -43,84 +43,104 @@ import com.example.lloydsbank.presentation.viewmodel.ItemListViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ItemListScreen(viewModel : ItemListViewModel = hiltViewModel(), navController: NavController){
+fun ItemListScreen(viewModel: ItemListViewModel = hiltViewModel(), navController: NavController) {
 
-     val uiState by viewModel.uiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsState()
 
-     Column (modifier =  Modifier.fillMaxSize()){
-          TopAppBar(title = { Text(stringResource(R.string.fruits_list),textAlign = TextAlign.Center) })
+    Column(modifier = Modifier.fillMaxSize()) {
+        TopAppBar(title = {
+            Text(
+                stringResource(R.string.fruits_list),
+                textAlign = TextAlign.Center
+            )
+        })
 
-          when(uiState){
+        when (uiState) {
 
-             is ItemListState.Loading -> {
-                      Box( modifier = Modifier.fillMaxSize(),
-                           contentAlignment = Alignment.Center ){
-                         CircularProgressIndicator(
-                              modifier = Modifier.size(48.dp),
-                             color = MaterialTheme.colorScheme.primary,
-                             strokeWidth = 4.dp
-                         )
-                      }
-             }
+            is ItemListState.Loading -> {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(48.dp),
+                        color = MaterialTheme.colorScheme.primary,
+                        strokeWidth = 4.dp
+                    )
+                }
+            }
 
-             is ItemListState.Success -> {
-                   val items = (uiState as ItemListState.Success).items
-                   LazyColumn {
-                       items(items) { item ->
-                           ItemRow(item = item, navController = navController)
-                       }
-                   }
-             }
+            is ItemListState.Success -> {
+                val items = (uiState as ItemListState.Success).items
+                LazyColumn {
+                    items(items) { item ->
+                        ItemRow(item = item, navController = navController)
+                    }
+                }
+            }
 
-              is ItemListState.Error -> {
-                      Text(
-                          text = (uiState as ItemListState.Error).message,
-                          color = Color.Red,
-                          modifier = Modifier.fillMaxSize()
-                      )
-                  }
-          }
-     }
+            is ItemListState.Error -> {
+                Text(
+                    text = (uiState as ItemListState.Error).message,
+                    color = Color.Red,
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
+        }
+    }
 }
 
 @Composable
-fun ItemRow(item : Item, navController: NavController){
-         Row(modifier = Modifier
-             .fillMaxWidth()
-             .padding(horizontal = 16.dp, vertical = 8.dp)
-             .background(
-                 color = MaterialTheme.colorScheme.background,
-                 shape = RoundedCornerShape(8.dp)
-             )
-             .shadow(elevation = 4.dp,shape = RoundedCornerShape(8.dp), ambientColor = Color.Blue,spotColor = Color.Red)
-             .clickable {
-                 navController.navigate("${Constant.ITEM_DETAILS}/${item.id}")
-             }
-             .padding(16.dp),
-             verticalAlignment = Alignment.CenterVertically
-         ){
-                  AsyncImage( model = item.imageUrl,
-                      contentDescription = item.name,
-                      modifier = Modifier.size(64.dp).clip(CircleShape))
-                 Spacer(modifier = Modifier.width(16.dp))
-                 Column{
-                       Row (modifier = Modifier.fillMaxWidth()){
-                           Text( text = item.name ?: "",
-                               modifier = Modifier.weight(1f),
-                               style = MaterialTheme.typography.bodyMedium,
-                               color = MaterialTheme.colorScheme.onSurface)
-                           Text( text = stringResource(R.string.price) + " : ${item.price}  ",
-                               textAlign = TextAlign.End,
-                               style = MaterialTheme.typography.bodyMedium,
-                               color = MaterialTheme.colorScheme.onSurface)
-                       }
-                       Spacer(modifier = Modifier.height(4.dp))
-                        Text(
-                            text = item.description ?: "",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                 }
+fun ItemRow(item: Item, navController: NavController) {
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .padding(horizontal = 16.dp, vertical = 8.dp)
+        .background(
+            color = MaterialTheme.colorScheme.background,
+            shape = RoundedCornerShape(8.dp)
+        )
+        .shadow(
+            elevation = 4.dp,
+            shape = RoundedCornerShape(8.dp),
+            ambientColor = Color.Blue,
+            spotColor = Color.Red
+        )
+        .clickable {
+            navController.navigate("${Constant.ITEM_DETAILS}/${item.id}")
+        }
+        .padding(16.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        AsyncImage(
+            model = item.imageUrl,
+            contentDescription = item.name,
+            modifier = Modifier
+                .size(64.dp)
+                .clip(CircleShape)
+        )
+        Spacer(modifier = Modifier.width(16.dp))
+        Column {
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = item.name ?: "",
+                    modifier = Modifier.weight(1f),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = stringResource(R.string.price) + " : ${item.price}  ",
+                    textAlign = TextAlign.End,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = item.description ?: "",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
 
-         }
+    }
 }
