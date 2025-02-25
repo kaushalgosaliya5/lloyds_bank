@@ -18,7 +18,6 @@ class ItemListViewModel @Inject constructor(private val fetchItemListUseCase: Fe
     ViewModel() {
 
     private val _items = MutableStateFlow<List<Item>>(emptyList())
-
     private val _uiState = MutableStateFlow<ItemListState>(ItemListState.Loading)
     val uiState: StateFlow<ItemListState> = _uiState
 

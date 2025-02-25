@@ -10,20 +10,20 @@ import org.junit.Test
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
 
-class FetchItemDetailsUseCaseTest{
+class FetchItemDetailsUseCaseTest {
 
-      private val itemRepository : ItemRepository = mock()
+    private val itemRepository: ItemRepository = mock()
 
-      @Test
-      fun test_success_item_name() = runTest {
-            `when`(itemRepository.fetchItemDetails())
-                  .thenReturn(getItemList())
+    @Test
+    fun test_success_item_name() = runTest {
+        `when`(itemRepository.fetchItemDetails())
+            .thenReturn(getItemList())
 
-          val useCase = FetchItemDetailsUseCase(itemRepository)
-          val response = useCase.invoke()
+        val useCase = FetchItemDetailsUseCase(itemRepository)
+        val response = useCase.invoke()
 
-          assertEquals(getItemList().get(1).name,response.last().name)
-      }
+        assertEquals(getItemList().get(1).name, response.last().name)
+    }
 
     @Test
     fun test_success_description_not_null() = runTest {
@@ -47,16 +47,15 @@ class FetchItemDetailsUseCaseTest{
         assertNull(response.last().imageUrl)
     }
 
-
-    private fun getItemList() : List<Item> {
+    private fun getItemList(): List<Item> {
         return listOf(
             Item(
-            id = 1,
-            name = "apple",
-            imageUrl = "https://apple.jpg",
-            description = "apple is red",
-            price = "100"
-          ),
+                id = 1,
+                name = "apple",
+                imageUrl = "https://apple.jpg",
+                description = "apple is red",
+                price = "100"
+            ),
             Item(
                 id = 2,
                 name = "banana",

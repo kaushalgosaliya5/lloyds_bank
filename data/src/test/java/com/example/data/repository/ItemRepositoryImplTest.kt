@@ -8,9 +8,9 @@ import org.junit.Test
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
 
-class ItemRepositoryImplTest{
+class ItemRepositoryImplTest {
 
-    private val apiService : ApiService = mock()
+    private val apiService: ApiService = mock()
 
     @Test
     fun test_success_item_count() = runTest {
@@ -21,7 +21,7 @@ class ItemRepositoryImplTest{
         val repo = ItemRepositoryImpl(apiService)
         val response = repo.fetchItemDetails()
 
-       assertEquals(getItemList().size,response.size)
+        assertEquals(getItemList().size, response.size)
     }
 
     @Test
@@ -33,7 +33,7 @@ class ItemRepositoryImplTest{
         val repo = ItemRepositoryImpl(apiService)
         val response = repo.fetchItemDetails()
 
-        assertEquals("apple",response.get(0).name)
+        assertEquals("apple", response.get(0).name)
     }
 
     @Test
@@ -45,7 +45,7 @@ class ItemRepositoryImplTest{
         val repo = ItemRepositoryImpl(apiService)
         val response = repo.fetchItemDetails()
 
-        assertNotEquals("40",response.get(0).price)
+        assertNotEquals("40", response.get(0).price)
     }
 
     @Test
@@ -57,7 +57,7 @@ class ItemRepositoryImplTest{
         val repo = ItemRepositoryImpl(apiService)
         val response = repo.fetchItemDetails()
 
-        assertEquals(0,response.size)
+        assertEquals(0, response.size)
     }
 
     @Test
@@ -69,17 +69,18 @@ class ItemRepositoryImplTest{
         val repo = ItemRepositoryImpl(apiService)
         val response = repo.fetchItemDetails()
 
-        assertEquals(null,response.getOrNull(0))
+        assertEquals(null, response.getOrNull(0))
     }
 
-
-    private fun getItemList() : List<Item> {
-         return listOf(Item(
-             id = 1,
-             name = "apple",
-             imageUrl = "https://apple.jpg",
-             description = "apple is red",
-             price = "100"
-         ))
+    private fun getItemList(): List<Item> {
+        return listOf(
+            Item(
+                id = 1,
+                name = "apple",
+                imageUrl = "https://apple.jpg",
+                description = "apple is red",
+                price = "100"
+            )
+        )
     }
 }
