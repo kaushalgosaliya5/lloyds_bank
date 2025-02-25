@@ -6,14 +6,16 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.time.Duration.Companion.seconds
 
 @HiltViewModel
 class SplashViewModel @Inject constructor() : ViewModel() {
 
-    private val _isTimeoutCompleted = MutableStateFlow(false)
-    val isTimeoutCompleted: StateFlow<Boolean> = _isTimeoutCompleted
+    private val _isTimeoutCompleted = MutableStateFlow(true)
+    val isTimeoutCompleted = _isTimeoutCompleted.asStateFlow()
 
     init {
         startSplashTimeout()
@@ -21,8 +23,8 @@ class SplashViewModel @Inject constructor() : ViewModel() {
 
     private fun startSplashTimeout() {
         viewModelScope.launch {
-            delay(3000)
-            _isTimeoutCompleted.value = true
+            delay(3.seconds)
+            _isTimeoutCompleted.value = false
         }
     }
 

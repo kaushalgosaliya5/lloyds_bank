@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.SplashScreen.ComposeSplash" parent="Theme.SplashScreen.IconBackground">
+        <item name="windowSplashScreenBackground">#90ee90</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/bank_icon</item>
+        <item name="windowSplashScreenIconBackgroundColor">#FFFFFF</item>
+        <item name="postSplashScreenTheme">@style/Theme.AppCompat.DayNight</item>
+    </style>
+</resources>

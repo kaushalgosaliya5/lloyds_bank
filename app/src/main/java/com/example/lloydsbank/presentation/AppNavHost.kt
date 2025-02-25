@@ -8,22 +8,12 @@ import androidx.navigation.compose.composable
 import com.example.data.utils.Constant
 import com.example.lloydsbank.presentation.ui.ItemDetailsScreen
 import com.example.lloydsbank.presentation.ui.ItemListScreen
-import com.example.lloydsbank.presentation.ui.SplashScreen
 import com.example.lloydsbank.presentation.viewmodel.ItemListViewModel
-import com.example.lloydsbank.presentation.viewmodel.SplashViewModel
 
 @Composable
 fun AppNavHost(navController: NavHostController) {
-    NavHost(navController, startDestination = Constant.SCREEN_SPLASH) {
+    NavHost(navController, startDestination = Constant.ITEM_LIST) {
 
-        composable(Constant.SCREEN_SPLASH) { backStackEntry ->
-            val viewModel = hiltViewModel<SplashViewModel>(backStackEntry)
-            SplashScreen(viewModel = viewModel) {
-                navController.navigate(Constant.ITEM_LIST) {
-                    popUpTo(Constant.SCREEN_SPLASH) { inclusive = true }
-                }
-            }
-        }
         composable(Constant.ITEM_LIST) { backStackEntry ->
             val viewModel: ItemListViewModel = hiltViewModel(backStackEntry)
             ItemListScreen(viewModel = viewModel, navController = navController)
