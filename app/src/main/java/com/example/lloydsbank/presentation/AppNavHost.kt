@@ -5,7 +5,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.common.Constant
+import com.example.data.utils.Constant
 import com.example.lloydsbank.presentation.ui.ItemDetailsScreen
 import com.example.lloydsbank.presentation.ui.ItemListScreen
 import com.example.lloydsbank.presentation.ui.SplashScreen

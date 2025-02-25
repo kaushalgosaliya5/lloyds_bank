@@ -35,7 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.example.common.Constant
+import com.example.data.utils.Constant
 import com.example.domain.model.Item
 import com.example.lloydsbank.R
 import com.example.lloydsbank.presentation.state.ItemListState

@@ -22,5 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "lloydsbank"
 include(":app")
 include(":data")
-include(":common")
 include(":domain")

@@ -1,12 +1,10 @@
 package com.example.lloydsbank.presentation.viewmodel
 
-import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.common.Constant
+import com.example.data.utils.Constant
 import com.example.domain.model.Item
 import com.example.domain.usecase.FetchItemDetailsUseCase
-import com.example.lloydsbank.R
 import com.example.lloydsbank.presentation.state.ItemListState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

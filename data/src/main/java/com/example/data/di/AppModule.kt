@@ -1,6 +1,6 @@
 package com.example.data.di
 
-import com.example.common.Constant
+import com.example.data.utils.Constant
 import com.example.data.remote.ApiService
 import dagger.Module
 import dagger.Provides
