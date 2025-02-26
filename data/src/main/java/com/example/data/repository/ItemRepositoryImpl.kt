@@ -2,7 +2,6 @@ package com.example.data.repository
 
 import com.example.data.mappers.toDomain
 import com.example.data.remote.ApiService
-import com.example.data.state.ResultState
 import com.example.domain.model.Item
 import com.example.domain.repository.ItemRepository
 import kotlinx.coroutines.Dispatchers
@@ -17,14 +16,8 @@ class ItemRepositoryImpl @Inject constructor(
 
     override suspend fun fetchItemDetails(): List<Item> {
         return withContext(Dispatchers.IO) {
-            try {
-                itemsList = apiService.getItemDetails().toDomain()
-                ResultState.Success(itemsList ?: emptyList())
-                itemsList ?: emptyList()
-            } catch (exception: Exception) {
-                ResultState.Error(exception)
-                emptyList()
-            }
+            itemsList = apiService.getItemDetails().toDomain()
+            itemsList ?: emptyList()
         }
     }
 

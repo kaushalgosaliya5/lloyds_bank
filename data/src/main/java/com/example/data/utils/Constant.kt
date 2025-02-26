@@ -7,7 +7,6 @@ object Constant {
     const val API_ID = "9427c14a054baf569196"
 
     // Screen Details
-    const val SCREEN_SPLASH = "splash"
     const val ITEM_LIST = "item_list"
     const val ITEM_DETAILS = "itemDetails"
 

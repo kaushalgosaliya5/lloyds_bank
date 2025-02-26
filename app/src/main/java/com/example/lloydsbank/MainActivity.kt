@@ -20,16 +20,15 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         installSplashScreen()
             .apply {
-                setKeepOnScreenCondition{
-                     viewModel.isTimeoutCompleted.value
+                setKeepOnScreenCondition {
+                    viewModel.isTimeoutCompleted.value
                 }
             }
 
         setContent {
-           val navController = rememberNavController()
+            val navController = rememberNavController()
             AppNavHost(navController = navController)
         }
     }

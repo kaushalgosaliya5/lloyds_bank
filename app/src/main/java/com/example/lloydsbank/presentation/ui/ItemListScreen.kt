@@ -38,7 +38,6 @@ import coil.compose.AsyncImage
 import com.example.data.utils.Constant
 import com.example.domain.model.Item
 import com.example.lloydsbank.R
-import com.example.lloydsbank.presentation.state.ItemListState
 import com.example.lloydsbank.presentation.viewmodel.ItemListViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -55,40 +54,39 @@ fun ItemListScreen(viewModel: ItemListViewModel = hiltViewModel(), navController
             )
         })
 
-        when (uiState) {
-
-            is ItemListState.Loading -> {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(48.dp),
-                        color = MaterialTheme.colorScheme.primary,
-                        strokeWidth = 4.dp
-                    )
-                }
+        if (uiState.isLoading) {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(48.dp),
+                    color = MaterialTheme.colorScheme.primary,
+                    strokeWidth = 4.dp
+                )
             }
+        }
 
-            is ItemListState.Success -> {
-                val items = (uiState as ItemListState.Success).items
-                LazyColumn {
-                    items(items) { item ->
+        if (uiState.error.isNotBlank()) {
+            Text(
+                text = uiState.error,
+                color = Color.Red,
+                modifier = Modifier.fillMaxSize()
+            )
+        }
+
+        if (uiState.data?.size != 0) {
+            LazyColumn {
+                uiState.data?.let {
+                    items(it) { item ->
                         ItemRow(item = item, navController = navController)
                     }
                 }
             }
-
-            is ItemListState.Error -> {
-                Text(
-                    text = (uiState as ItemListState.Error).message,
-                    color = Color.Red,
-                    modifier = Modifier.fillMaxSize()
-                )
-            }
         }
     }
 }
+
 
 @Composable
 fun ItemRow(item: Item, navController: NavController) {
