@@ -1,4 +1,4 @@
-package com.example.lloydsbank
+package com.example.data.di
 
 import com.example.data.repository.ItemRepositoryImpl
 import com.example.domain.repository.ItemRepository
