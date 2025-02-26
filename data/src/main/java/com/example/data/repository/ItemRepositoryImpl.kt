@@ -28,8 +28,4 @@ class ItemRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getItemById(itemId: Int): Item? {
-        return itemsList?.find { it.id == itemId }
-    }
-
 }

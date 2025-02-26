@@ -8,4 +8,6 @@ import retrofit2.http.GET
 interface ApiService {
     @GET(Constant.API_ID)
     suspend fun getItemDetails(): List<ItemDTO>
+
+    suspend fun getItemById(itemId : Int) : ItemDTO
 }
