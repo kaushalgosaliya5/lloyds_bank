@@ -2,8 +2,8 @@
 <resources>
     <style name="Theme.SplashScreen.ComposeSplash" parent="Theme.SplashScreen.IconBackground">
         <item name="windowSplashScreenBackground">@color/green</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/bank_icon</item>
-        <item name="windowSplashScreenIconBackgroundColor">#FFFFFF</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/fruits_icon</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/green</item>
         <item name="postSplashScreenTheme">@style/Theme.AppCompat.DayNight</item>
     </style>
 </resources>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">fruitsapp</string>
+    <string name="app_name">Fruits App</string>
     <string name="splash_title">Fruits App</string>
     <string name="fruits_list">Fruits List</string>
     <string name="fruit_details">Fruit Details</string>
