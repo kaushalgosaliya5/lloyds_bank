@@ -4,13 +4,13 @@
 
 Fruits Application is develop using below practices and flow standards.
 
-- **Modularization**
+- **Modularization** : Improve maintainability, Scalability, and Build times
 - **Clean Architecture** : Presentation : Domain : Data
 - **MVVM** : Model View ViewModel
 - **Jetpack Compose** : UI Component
 - **Hilt** : Dependency Injection
 - **Coroutines** : Background and API Calls
-- **Unit Testing** : Testing Code working as per the expectation
+- **Unit Testing** : Test the code working as per the expectation
 
 ### Screenshots
 

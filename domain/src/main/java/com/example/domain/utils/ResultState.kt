@@ -1,11 +1,11 @@
 package com.example.domain.utils
 
-sealed  class Resource<T>(val data:T?=null,val message:String?=null){
+sealed  class ResultState<T>(val data:T?=null, val message:String?=null){
 
-    class Success<T>(data:T?): Resource<T>(data = data)
+    class Success<T>(data:T?): ResultState<T>(data = data)
 
-    class Loading<T>(message: String?) : Resource<T>()
+    class Loading<T>(message: String?) : ResultState<T>()
 
-    class Error<T>(message:String?) : Resource<T>(message= message)
+    class Error<T>(message:String?) : ResultState<T>(message= message)
 
 }

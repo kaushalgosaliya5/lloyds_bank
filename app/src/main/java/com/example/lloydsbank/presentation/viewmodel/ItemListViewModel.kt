@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.data.utils.Constant
 import com.example.domain.usecase.FetchItemDetailsUseCase
-import com.example.domain.utils.Resource
+import com.example.domain.utils.ResultState
 import com.example.lloydsbank.presentation.state.ItemListState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,15 +28,15 @@ class ItemListViewModel @Inject constructor(private val fetchItemListUseCase: Fe
     fun fetchItems() {
         fetchItemListUseCase().onEach {
             when (it) {
-                is Resource.Loading -> {
+                is ResultState.Loading -> {
                     _uiState.value = ItemListState(isLoading = true)
                 }
 
-                is Resource.Success -> {
+                is ResultState.Success -> {
                     _uiState.value = ItemListState(data = it.data)
                 }
 
-                is Resource.Error -> {
+                is ResultState.Error -> {
                     _uiState.value = ItemListState(error = it.message ?: Constant.ERROR_MESSAGE)
                 }
             }
