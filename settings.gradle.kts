@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "lloydsbank"
+rootProject.name = "fruitsapp"
 include(":app")
 include(":data")
 include(":domain")
