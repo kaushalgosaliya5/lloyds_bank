@@ -1,5 +1,7 @@
 package com.example.data.repository
 
+import com.example.data.mappers.toDomain
+import com.example.data.model.ItemDTO
 import com.example.data.remote.ApiService
 import com.example.domain.model.Item
 import kotlinx.coroutines.test.runTest
@@ -61,20 +63,20 @@ class ItemRepositoryImplTest {
     }
 
     @Test
-    fun test_success_null_check() = runTest {
+    fun test_success_image_url_null_check() = runTest {
 
         `when`(apiService.getItemDetails())
-            .thenReturn(null)
+            .thenReturn(getItemList())
 
         val repo = ItemRepositoryImpl(apiService)
         val response = repo.fetchItemDetails()
 
-        assertEquals(null, response.getOrNull(0))
+        assertNotNull(response.get(0).imageUrl)
     }
 
-    private fun getItemList(): List<Item> {
+    private fun getItemList(): List<ItemDTO> {
         return listOf(
-            Item(
+            ItemDTO(
                 id = 1,
                 name = "apple",
                 imageUrl = "https://apple.jpg",
