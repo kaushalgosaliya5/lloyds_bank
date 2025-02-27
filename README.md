@@ -2,7 +2,7 @@
 
 ## Description
 
-Fruits Application is develop using below practices and flow standards.
+Fruits Application is develop using below practices and follow standards.
 
 - **Modularization** : Improve maintainability, Scalability, and Build times
 - **Clean Architecture** : Presentation : Domain : Data
