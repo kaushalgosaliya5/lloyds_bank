@@ -5,6 +5,7 @@ import com.example.domain.repository.ItemRepository
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNotNull
 import junit.framework.TestCase.assertNull
+import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import org.mockito.Mockito.mock
@@ -22,7 +23,7 @@ class FetchItemDetailsUseCaseTest {
         val useCase = FetchItemDetailsUseCase(itemRepository)
         val response = useCase.invoke()
 
-        assertEquals(getItemList().get(1).name, response.last().name)
+        assertEquals(getItemList().get(1).name, response.last().data?.get(1)?.name)
     }
 
     @Test
@@ -33,7 +34,7 @@ class FetchItemDetailsUseCaseTest {
         val useCase = FetchItemDetailsUseCase(itemRepository)
         val response = useCase.invoke()
 
-        assertNotNull(response.last().description)
+        assertNotNull(response.last().data?.get(0)?.description)
     }
 
     @Test
@@ -44,7 +45,7 @@ class FetchItemDetailsUseCaseTest {
         val useCase = FetchItemDetailsUseCase(itemRepository)
         val response = useCase.invoke()
 
-        assertNull(response.last().imageUrl)
+        assertNull(response.last().data?.get(1)?.imageUrl)
     }
 
     private fun getItemList(): List<Item> {
