@@ -30,6 +30,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.lloydsbank.R
+import com.example.lloydsbank.presentation.state.GetItemState
 import com.example.lloydsbank.presentation.viewmodel.ItemDetailsViewModel
 
 
@@ -38,7 +39,7 @@ import com.example.lloydsbank.presentation.viewmodel.ItemDetailsViewModel
 fun ItemDetailsScreen(itemId: String, navController: NavController) {
 
     val viewModel: ItemDetailsViewModel = hiltViewModel()
-    val item by viewModel.item.collectAsState()
+    val item by viewModel.item.collectAsState(initial = GetItemState())
 
     LaunchedEffect(itemId) {
         viewModel.fetchItem(itemId)

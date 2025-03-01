@@ -22,6 +22,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -38,13 +39,18 @@ import coil.compose.AsyncImage
 import com.example.data.utils.Constant
 import com.example.domain.model.Item
 import com.example.lloydsbank.R
+import com.example.lloydsbank.presentation.state.ItemListState
 import com.example.lloydsbank.presentation.viewmodel.ItemListViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ItemListScreen(viewModel: ItemListViewModel = hiltViewModel(), navController: NavController) {
 
-    val uiState by viewModel.uiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsState(initial = ItemListState())
+
+    LaunchedEffect(key1 = Unit) {
+        viewModel.fetchItems()
+    }
 
     Column(modifier = Modifier.fillMaxSize()) {
         TopAppBar(title = {
